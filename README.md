@@ -25,7 +25,9 @@ The project also does Natural Language Processing (NLP) using Latent Dirichlet a
     `sudo pip install nltk`
     
     `python -m    nltk.downloader all`
-1. Get the Email dump - Example Podesta Dump `wget https://file.wikileaks.org/file/podesta-emails/podesta-emails.mbox-2016-11-06.gz`
+1. Get the Email dump - Example Podesta Dump 
+
+`wget https://file.wikileaks.org/file/podesta-emails/podesta-emails.mbox-2016-11-06.gz`
 1. Copy the all files from this project and run `chmod u+x *`
 1. Modify email_unpack.sh to reflect the correctfile
 1. Explode the compressed mbox file into individual EML files, this is required to make use of parallel processing `./email_unpack.sh`
@@ -38,12 +40,13 @@ The project also does Natural Language Processing (NLP) using Latent Dirichlet a
     `spark-submit ParseEmailDump.py /user/bharat/podesta/msgs/messages/ parseddump.csv`
 1. Run the code to generate the EmailContent, Nodes and Edges
 
-`python CreateNodesEdges.py`
+    `python CreateNodesEdges.py`
 
 1. Upload the generated file to Hadoop
 
     `hdfs dfs -copyFromLocal /home/bharat/sparkemaildmp/EmailContent.csv /user/bharat/podesta/`
 1. Run the NLP LDA analysis code by passing in the location of the EmailContent.csv on Hadoop and the number of topics to generate
+    
     `spark-submit NLPLDAllocation.py /user/bharat/podesta/EmailContent.csv 20`
    
 
