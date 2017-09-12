@@ -73,7 +73,7 @@ def cleanup_text(record):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
+    if len(sys.argv) < 3:
         print >> sys.stderr, "Usage: spark-submit NLPLDAllocation <Location of Email dump on Hadoop> <number of topics>"
         exit(-1)
 
