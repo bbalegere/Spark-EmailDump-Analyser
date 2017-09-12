@@ -23,14 +23,22 @@ The project also does Natural Language Processing (NLP) using Latent Dirichlet a
     `sudo pip install lxml`
     
     `sudo pip install nltk`
+    
     `python -m    nltk.downloader all`
 1. Get the Email dump - Example Podesta Dump `wget https://file.wikileaks.org/file/podesta-emails/podesta-emails.mbox-2016-11-06.gz`
 1. Copy the all files from this project and run `chmod u+x *`
 1. Modify email_unpack.sh to reflect the correctfile
 1. Explode the compressed mbox file into individual EML files, this is required to make use of parallel processing `./email_unpack.sh`
 1. Incase the email dump is a collection of eml files, then the above step is not required
-1. Upload the folder containing the eml files into Hadoop `hdfs dfs -copyFromLocal /home/bharat/podestadump/messages/ /user/bharat/podesta/msgs`
-1. Run the code to parse the emails - `spark-submit ParseEmailDump.py /user/bharat/podesta/msgs/messages/ parseddump.csv`
+1. Upload the folder containing the eml files into Hadoop 
+
+`hdfs dfs -copyFromLocal /home/bharat/podestadump/messages/ /user/bharat/podesta/msgs`
+1. Run the code to parse the emails -
+
+`spark-submit ParseEmailDump.py /user/bharat/podesta/msgs/messages/ parseddump.csv`
+1. Run the code to generate the EmailContent, Nodes and Edges
+
+`python CreateNodesEdges.py`
 
 
 
