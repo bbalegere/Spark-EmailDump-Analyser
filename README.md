@@ -27,9 +27,9 @@ The project also does Natural Language Processing (NLP) using Latent Dirichlet a
     `python -m    nltk.downloader all`
 1. Get the Email dump - Example Podesta Dump 
 
-`wget https://file.wikileaks.org/file/podesta-emails/podesta-emails.mbox-2016-11-06.gz`
+    `wget https://file.wikileaks.org/file/podesta-emails/podesta-emails.mbox-2016-11-06.gz`
 1. Copy the all files from this project and run `chmod u+x *`
-1. Modify email_unpack.sh to reflect the correctfile
+1. Modify email_unpack.sh to reflect the correct filename
 1. Explode the compressed mbox file into individual EML files, this is required to make use of parallel processing `./email_unpack.sh`
 1. Incase the email dump is a collection of eml files, then the above step is not required
 1. Upload the folder containing the eml files into Hadoop 
