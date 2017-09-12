@@ -1,7 +1,9 @@
 # Spark-EmailDump-Analyser
 Description - Use Apache Spark to parse and analyse large email dumps. 
+
 Wikileaks releases many email dumps such as the Podesta email files. This project uses Apache Spark infrastructure to generate a csv file of the data and a NodeList/EdgeList which can then be used to perform Network Analysis.
 The project also does Natural Language Processing (NLP) using Latent Dirichlet allocation (LDA) on the contents of the email dump.
+PageRank calculation for the Nodes can be performed by specifying the number of iterations.
 
 ## Instructions (using Google Cloud and Podesta Email Dump as Example)
 1. Create a Google Cloud Account - as of now you get $300 free credit with 365 days validity
@@ -51,7 +53,7 @@ The project also does Natural Language Processing (NLP) using Latent Dirichlet a
     
     `spark-submit NLPLDAllocation.py /user/bharat/podesta/EmailContent.csv 20`
     
-1. Run the PageRank code to generate top 100 PageRanks in descending order by passing the location of the edges.csv and the number of iterations to run the PageRank Alogorithm for
+1. Run the PageRank code to generate top 100 PageRanks in descending order by passing the location of the edges.csv and the number of iterations to run the PageRank Alogorithm for. The pageranks will be written to pagerank.csv
 
     `spark-submit PageRank.py /user/bharat/podesta/Edges.csv 20`
    
