@@ -3,11 +3,11 @@ import csv
 import pandas as pd
 
 if __name__ == "__main__":
-    if len(sys.argv) < 1:
+    if len(sys.argv) < 2:
         print >> sys.stderr, "Usage: CreateNodesEdges <inputfile>"
         exit(-1)
 
-    fulldf = pd.read_csv("parseddump.csv", quoting=csv.QUOTE_MINIMAL, encoding='utf-8', delimiter='|')
+    fulldf = pd.read_csv(sys.argv[1], quoting=csv.QUOTE_MINIMAL, encoding='utf-8', delimiter='|')
 
     # Dump Email Content - to be used later for LDA
     emailOutput = "EmailContent.csv"
