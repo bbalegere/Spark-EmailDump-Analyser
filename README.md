@@ -47,7 +47,7 @@ The project also does Natural Language Processing (NLP) using Latent Dirichlet a
     `hdfs dfs -copyFromLocal /home/bharat/sparkemaildmp/EmailContent.csv /user/bharat/podesta/`
     
     `hdfs dfs -copyFromLocal /home/bharat/sparkemaildmp/Edges.csv /user/bharat/podesta/`
-1. Run the NLP LDA analysis code by passing in the location of the EmailContent.csv on Hadoop and the number of topics to generate
+1. Run the NLP LDA analysis code by passing in the location of the EmailContent.csv on Hadoop and the number of topics to generate. You will have to edit the code change the location of the nltk data. In this its `nltk.data.path.append("/home/bharat/nltk_data/")`
     
     `spark-submit NLPLDAllocation.py /user/bharat/podesta/EmailContent.csv 20`
     
