@@ -88,7 +88,7 @@ def parsemail(emaildump):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
+    if len(sys.argv) < 3:
         print >> sys.stderr, "Usage: spark-submit ParseEmailDump.py <Directory on Hadoop containing the eml files> <outputfile name>"
         exit(-1)
 
