@@ -32,14 +32,20 @@ The project also does Natural Language Processing (NLP) using Latent Dirichlet a
 1. Incase the email dump is a collection of eml files, then the above step is not required
 1. Upload the folder containing the eml files into Hadoop 
 
-`hdfs dfs -copyFromLocal /home/bharat/podestadump/messages/ /user/bharat/podesta/msgs`
-1. Run the code to parse the emails -
+    `hdfs dfs -copyFromLocal /home/bharat/podestadump/messages/ /user/bharat/podesta/msgs`
+1. Run the code to parse the emails by passing the location of the messages folder on Hadoop and the Output File Name
 
-`spark-submit ParseEmailDump.py /user/bharat/podesta/msgs/messages/ parseddump.csv`
+    `spark-submit ParseEmailDump.py /user/bharat/podesta/msgs/messages/ parseddump.csv`
 1. Run the code to generate the EmailContent, Nodes and Edges
 
 `python CreateNodesEdges.py`
 
+1. Upload the generated file to Hadoop
+
+    `hdfs dfs -copyFromLocal /home/bharat/sparkemaildmp/EmailContent.csv /user/bharat/podesta/`
+1. Run the NLP LDA analysis code by passing in the location of the EmailContent.csv on Hadoop and the number of topics to generate
+    `spark-submit NLPLDAllocation.py /user/bharat/podesta/EmailContent.csv 20`
+   
 
 
 
