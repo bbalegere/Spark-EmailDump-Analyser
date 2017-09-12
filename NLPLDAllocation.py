@@ -98,13 +98,14 @@ if __name__ == "__main__":
     idfModel = idf.fit(featurizedData)
     rescaledData = idfModel.transform(featurizedData)
 
-    lda = LDA(k=sys.argv[2], seed=123, optimizer="em", featuresCol="features")
+    notopics = int(sys.argv[2])
+    lda = LDA(k=notopics, seed=123, optimizer="em", featuresCol="features")
 
     ldamodel = lda.fit(rescaledData)
 
     ldatopics = ldamodel.describeTopics()
-    ldatopics.show(sys.argv[2])
+    ldatopics.show(notopics)
 
     udf_map_termID_to_Word = udf(map_termID_to_Word, ArrayType(StringType()))
     ldatopics_mapped = ldatopics.withColumn("topic_desc", udf_map_termID_to_Word(ldatopics.termIndices))
-    ldatopics_mapped.select(ldatopics_mapped.topic, ldatopics_mapped.topic_desc).show(sys.argv[2], False)
+    ldatopics_mapped.select(ldatopics_mapped.topic, ldatopics_mapped.topic_desc).show(notopics, False)
